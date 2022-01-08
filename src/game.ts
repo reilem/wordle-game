@@ -4,11 +4,19 @@ import * as readline from 'readline';
 import { maxSteps, solveMode, wordLength, wordListLength } from '.';
 import { printHistory } from './print';
 import { getWordListReadInterface } from './read';
+import { printNextBestGuesses } from './solve';
+
+export enum CharacterValue {
+  correctPosition,
+  inWord,
+  notInWord,
+}
 
 export interface CharacterGuessEntry {
   character: string;
-  value: number;
+  value: CharacterValue;
 }
+
 let currentAnswer: string = '';
 const currentHistory: CharacterGuessEntry[][] = [];
 
@@ -49,11 +57,11 @@ function wordGuess(guess: string) {
     const character = guess[i];
     const answerCharacter = currentAnswer[i];
     if (character === answerCharacter) {
-      nextRow.push({ character, value: 1 });
+      nextRow.push({ character, value: CharacterValue.correctPosition });
     } else if (currentAnswer.includes(character)) {
-      nextRow.push({ character, value: 0 });
+      nextRow.push({ character, value: CharacterValue.inWord });
     } else {
-      nextRow.push({ character, value: -1 });
+      nextRow.push({ character, value: CharacterValue.notInWord });
     }
   }
   currentHistory.push(nextRow);
@@ -67,9 +75,10 @@ function wordGuess(guess: string) {
   }
 }
 
-function askQuestion() {
+async function askQuestion() {
   console.log('');
   if (solveMode) {
+    await printNextBestGuesses(currentHistory);
   }
   rl.question('Enter a guess: ', wordGuess);
 }

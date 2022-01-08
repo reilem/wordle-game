@@ -1,5 +1,5 @@
 import { maxSteps, wordLength } from '.';
-import { CharacterGuessEntry } from './game';
+import { CharacterGuessEntry, CharacterValue } from './game';
 
 enum Color {
   red,
@@ -30,13 +30,13 @@ export function printCharGuess(row: CharacterGuessEntry[] | undefined, index: nu
   }
   const entry = row[index];
   switch (entry.value) {
-    case 1:
+    case CharacterValue.correctPosition:
       print(entry.character, Color.green);
       break;
-    case 0:
+    case CharacterValue.inWord:
       print(entry.character, Color.yellow);
       break;
-    default:
+    case CharacterValue.notInWord:
       print(entry.character, Color.red);
       break;
   }
