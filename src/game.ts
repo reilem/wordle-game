@@ -1,9 +1,8 @@
 import { randomInt } from 'crypto';
 import { exit } from 'process';
-import * as readline from 'readline';
 import { maxSteps, solveMode, wordLength, wordListLength } from '.';
 import { printHistory } from './print';
-import { getWordListReadInterface } from './read';
+import { getReadline, getWordListReadInterface } from './read';
 import { printNextBestGuesses } from './solve';
 
 export enum CharacterValue {
@@ -20,10 +19,7 @@ export interface CharacterGuessEntry {
 let currentAnswer: string = '';
 const currentHistory: CharacterGuessEntry[][] = [];
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+const rl = getReadline();
 
 function stepsPlayed() {
   return currentHistory.length;
@@ -52,6 +48,11 @@ async function restartGame(answer: string) {
 }
 
 function wordGuess(guess: string) {
+  if (guess.length !== wordLength) {
+    console.log('Incorrect length, try again!');
+    askQuestion();
+    return;
+  }
   const nextRow: CharacterGuessEntry[] = [];
   for (let i = 0; i < wordLength; i++) {
     const character = guess[i];

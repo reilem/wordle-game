@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node-dev src/index.ts",
-    "start:solve": "export SOLVE=1 && yarn start"
+    "start:solve": "export SOLVE=1 && yarn start",
+    "start:reverse": "export REVERSE=1 && yarn start"
   },
   "devDependencies": {
     "@types/node": "^17.0.8",

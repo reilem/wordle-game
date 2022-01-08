@@ -92,7 +92,7 @@ function isWordValid(word: string, history: CharacterGuessEntry[][]) {
   return true;
 }
 
-export async function printNextBestGuesses(history: CharacterGuessEntry[][]) {
+export async function getNextBestGuesses(history: CharacterGuessEntry[][]): Promise<string[]> {
   const readInterface = getWordListReadInterface();
 
   let currentMaxWeight = 0;
@@ -109,5 +109,10 @@ export async function printNextBestGuesses(history: CharacterGuessEntry[][]) {
       maxWords.push(word);
     }
   }
+  return maxWords;
+}
+
+export async function printNextBestGuesses(history: CharacterGuessEntry[][]) {
+  const maxWords = await getNextBestGuesses(history);
   console.log(`Next best guesses are: ${maxWords.join(', ')}`);
 }
