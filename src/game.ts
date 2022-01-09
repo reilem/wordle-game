@@ -36,6 +36,7 @@ async function generateAnswer() {
     }
     c++;
   }
+  wordListInterface.close();
 }
 
 async function restartGame(answer: string) {

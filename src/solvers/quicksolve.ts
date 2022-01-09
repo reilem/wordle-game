@@ -14,15 +14,17 @@ async function getSolution(): Promise<string> {
   const now = new Date();
   const s = calcDateOffset(now);
   const solutionIndex = s % getWordListLength();
+  const wordListInterface = getWordListReadInterface();
 
   let c = 0;
   let solution = '';
-  for await (const word of getWordListReadInterface()) {
+  for await (const word of wordListInterface) {
     if (c === solutionIndex) {
       solution = word;
     }
     c++;
   }
+  wordListInterface.close();
   return solution;
 }
 

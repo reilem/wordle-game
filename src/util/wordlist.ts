@@ -10,6 +10,7 @@ export async function initWordListLength() {
     length++;
   }
   wordListLength = length;
+  fileReadInterface.close();
 }
 
 export function getWordListLength() {

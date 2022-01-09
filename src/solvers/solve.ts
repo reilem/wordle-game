@@ -109,6 +109,7 @@ export async function getNextBestGuesses(history: CharacterGuessEntry[][]): Prom
       maxWords.push(word);
     }
   }
+  readInterface.close();
   return maxWords;
 }
 
