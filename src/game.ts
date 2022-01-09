@@ -1,9 +1,10 @@
 import { randomInt } from 'crypto';
 import { exit } from 'process';
-import { maxSteps, solveMode, wordLength, wordListLength } from '.';
-import { printHistory } from './print';
-import { getReadline, getWordListReadInterface } from './read';
-import { printNextBestGuesses } from './solve';
+import { maxSteps, solveMode, wordLength } from '.';
+import { printNextBestGuesses } from './solvers/solve';
+import { printHistory } from './util/print';
+import { getReadline, getWordListReadInterface } from './util/read';
+import { getWordListLength } from './util/wordlist';
 
 export enum CharacterValue {
   correctPosition,
@@ -26,7 +27,7 @@ function stepsPlayed() {
 }
 
 async function generateAnswer() {
-  const randomIndex = randomInt(wordListLength);
+  const randomIndex = randomInt(getWordListLength());
   const wordListInterface = getWordListReadInterface();
   let c = 0;
   for await (const line of wordListInterface) {

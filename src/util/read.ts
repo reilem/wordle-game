@@ -1,6 +1,6 @@
 import fs from 'fs';
 import * as readline from 'readline';
-import { wordListFilePath } from '.';
+import { wordListFilePath } from '..';
 
 const rl = readline.createInterface({
   input: process.stdin,

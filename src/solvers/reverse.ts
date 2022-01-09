@@ -1,8 +1,8 @@
 import { exit } from 'process';
-import { maxSteps, wordLength } from '.';
-import { CharacterGuessEntry, CharacterValue } from './game';
-import { Color, print, printHistory } from './print';
-import { getReadline } from './read';
+import { maxSteps, wordLength } from '..';
+import { CharacterGuessEntry, CharacterValue } from '../game';
+import { Color, print, printHistory } from '../util/print';
+import { getReadline } from '../util/read';
 import { getNextBestGuesses } from './solve';
 
 const currentHistory: CharacterGuessEntry[][] = [];

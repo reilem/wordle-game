@@ -1,6 +1,6 @@
-import { wordLength } from '.';
-import { CharacterGuessEntry, CharacterValue } from './game';
-import { getWordListReadInterface } from './read';
+import { wordLength } from '..';
+import { CharacterGuessEntry, CharacterValue } from '../game';
+import { getWordListReadInterface } from '../util/read';
 
 const letterWeight: { [key: string]: number } = {
   a: 8.5,

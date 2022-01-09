@@ -1,17 +1,18 @@
 import { startGame } from './game';
-import { startReverseGame } from './reverse';
+import { startReverseGame } from './solvers/reverse';
+import { initWordListLength } from './util/wordlist';
 
 export let solveMode = false;
 export let reverseMode = false;
 
 export const wordListFilePath = 'assets/wordle-wordlist.txt';
-export const wordListLength = 5757;
 
 export const maxSteps = 6;
 export const wordLength = 5;
 
 async function main() {
   try {
+    await initWordListLength();
     if (process.env.SOLVE) {
       solveMode = true;
       console.log('Solve Mode:', solveMode);

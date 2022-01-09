@@ -1,5 +1,5 @@
-import { maxSteps, wordLength } from '.';
-import { CharacterGuessEntry, CharacterValue } from './game';
+import { maxSteps, wordLength } from '..';
+import { CharacterGuessEntry, CharacterValue } from '../game';
 
 export enum Color {
   red,
