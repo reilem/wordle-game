@@ -25,13 +25,13 @@ export function print(str: string, backgroundColor?: Color, foregroundColor?: Co
   if (backgroundColor == null && foregroundColor != null) {
     switch (foregroundColor) {
       case Color.red:
-        printStr = `\x1b[31m\x1b[40m${str}\x1b[0m`;
+        printStr = `\x1b[31m${str}\x1b[0m`;
         break;
       case Color.green:
-        printStr = `\x1b[32m\x1b[40m${str}\x1b[0m`;
+        printStr = `\x1b[32m${str}\x1b[0m`;
         break;
       case Color.yellow:
-        printStr = `\x1b[33m\x1b[40m${str}\x1b[0m`;
+        printStr = `\x1b[33m${str}\x1b[0m`;
         break;
     }
   }

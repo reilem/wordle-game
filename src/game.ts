@@ -1,9 +1,8 @@
 import { randomInt } from 'crypto';
-import { exit } from 'process';
 import { maxSteps, solveMode, wordLength } from '.';
 import { printNextBestGuesses } from './solvers/solve';
 import { printHistory } from './util/print';
-import { getReadline, getWordListReadInterface } from './util/read';
+import { exitGame, getReadline, getWordListReadInterface } from './util/read';
 import { getWordListLength } from './util/wordlist';
 
 export enum CharacterValue {
@@ -43,8 +42,7 @@ async function restartGame(answer: string) {
   if (answer.toLowerCase() === 'y') {
     startGame();
   } else {
-    rl.close();
-    exit();
+    exitGame();
   }
 }
 

@@ -1,8 +1,7 @@
-import { exit } from 'process';
 import { maxSteps, wordLength } from '..';
 import { CharacterGuessEntry, CharacterValue } from '../game';
 import { Color, print, printHistory } from '../util/print';
-import { getReadline } from '../util/read';
+import { exitGame, getReadline } from '../util/read';
 import { getNextBestGuesses } from './solve';
 
 const currentHistory: CharacterGuessEntry[][] = [];
@@ -48,7 +47,7 @@ async function restartGame(answer: string) {
     startReverseGame();
   } else {
     rl.close();
-    exit();
+    exitGame();
   }
 }
 

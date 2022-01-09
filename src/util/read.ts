@@ -18,3 +18,7 @@ export function getWordListReadInterface() {
 export function getReadline() {
   return rl;
 }
+
+export function exitGame() {
+  rl.close();
+}
