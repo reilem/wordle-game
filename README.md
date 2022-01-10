@@ -51,3 +51,9 @@ Outputs the current solution for the day on: http://powerlanguage.co.uk/wordle/
 yarn start:quicksolve
 npm run start:quicksolve
 ```
+
+Alternatively, you can open up the site in a browser and run the following command in the console:
+
+```js
+JSON.parse(window.localStorage.gameState).solution;
+```
