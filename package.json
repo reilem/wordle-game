@@ -8,6 +8,7 @@
     "start:solve": "export SOLVE=1 && yarn start",
     "start:reverse": "export REVERSE=1 && yarn start",
     "start:quicksolve": "export QUICKSOLVE=1 && yarn start",
+    "stats": "export STATS_MODE=1 && yarn start",
     "build": "tsc"
   },
   "devDependencies": {

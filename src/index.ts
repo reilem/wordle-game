@@ -1,11 +1,13 @@
 import { startGame } from './game';
 import { quicksolve } from './solvers/quicksolve';
 import { startReverseGame } from './solvers/reverse';
+import { stats } from './util/stats';
 import { initWordListLength } from './util/wordlist';
 
 export let solveMode = false;
 export let reverseMode = false;
 export let quicksolveLiveMode = false;
+export let statsMode = false;
 
 export const wordListFilePath = 'assets/wordle-wordlist.txt';
 
@@ -17,6 +19,7 @@ function initParameters() {
   if (solveMode) {
     console.log('Solve Mode:', solveMode);
   }
+  statsMode = !!process.env.STATS_MODE;
   reverseMode = !!process.env.REVERSE;
   quicksolveLiveMode = !!process.env.QUICKSOLVE;
 }
@@ -34,6 +37,8 @@ async function main() {
       await quicksolve();
     } else if (reverseMode) {
       await startReverseGame();
+    } else if (statsMode) {
+      await stats();
     } else {
       await startGame();
     }
